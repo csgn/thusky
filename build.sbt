@@ -18,6 +18,8 @@ ThisBuild / developers ++= List(
   )
 }
 
+ThisBuild / Compile / run / fork := true
+
 
 lazy val core = project
   .in(file("modules/core"))
@@ -28,9 +30,11 @@ lazy val core = project
   .settings(
     libraryDependencies ++= {
       Seq(
-        munit,
+        scalactic,
+        scalatest,
         cats,
         catsEffect,
+        catsEffectTestingScalatest,
       )
     }
   )
